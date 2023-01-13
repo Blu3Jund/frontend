@@ -1,0 +1,74 @@
+<div class="row">
+	<div class="col-xs-12">
+		<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+			<div class="row">
+				<div class="col-sm-5 form-group">
+					<label for="sku">SKU</label>
+					<input
+						type="text"
+						id="sku"
+						class="form-control"
+						name="sku"
+						ngModel
+						required>
+				</div>
+				<div class="col-sm-2 form-group">
+					<label for="quantity_in_stock">Stock</label>
+					<input
+						type="number"
+						id="quantity_in_stock"
+						class="form-control"
+						name="quantity_in_stock"
+						ngModel
+						required
+						pattern="^[1-9]+[0-9]*$">
+				</div>
+				<div class="col-sm-2 form-group">
+					<label for="price">Price</label>
+					<input
+						type="number"
+						id="price"
+						class="form-control"
+						name="price"
+						ngModel
+						required
+						pattern="^[1-9]+[0-9]*$">
+				</div>
+				<div class="col-sm-2 form-group">
+					<label for="upload">Upload</label>
+					<input
+						type="file"
+						id="upload"
+						class="form-control"
+						name="upload"
+						ngModel>
+				</div>
+				<div class="col-sm-2 form-group">
+					<label for="variations">Variations</label>
+					<input
+						type="text"
+						id="variations"
+						class="form-control"
+						name="variations"
+						ngModel>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<button
+						class="btn btn-success"
+						type="submit"
+						[disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}
+					</button>
+					<button
+						class="btn btn-danger"
+						type="button"
+						*ngIf="editMode"
+					>Delete
+					</button>
+					<button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
