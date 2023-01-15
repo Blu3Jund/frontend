@@ -20,7 +20,8 @@ export class DataStorageService {
     this.http
       .put(
         // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-        "https://bluejund.com:8443/api/products",
+        "http://localhost:8080/api/products",
+        // "https://bluejund.com:8443/api/products",
         products
       )
       .subscribe((response) => {
@@ -32,7 +33,8 @@ export class DataStorageService {
     return this.http
       .get<Product[]>(
         // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json"
-        "https://bluejund.com:8443/api/products"
+        "http://localhost:8080/api/products"
+        // "https://bluejund.com:8443/api/products"
       )
       .pipe(
         map((products) => {
