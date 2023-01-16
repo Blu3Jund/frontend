@@ -63,7 +63,7 @@ export class ProductEffects {
         return this.http.get<Product[]>(
           // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
           // "http://localhost:8080/api/products",
-          "https://bluejund.com:8443/api/products",
+          "https://bluejund.com/api/products",
         );
       }),
       map((products) => {
@@ -122,7 +122,7 @@ export class ProductEffects {
           // );
           return this.http.post(
             // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-            "https://bluejund.com:8443/api/products",
+            "https://bluejund.com/api/products",
             // {
             //   name: "6",
             //   description: "6",
