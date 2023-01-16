@@ -52,14 +52,14 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(ProductsActions.FETCH_PRODUCTS),
       switchMap(() => {
-        console.log("get request");
-        console.log(
-          this.http.get<Product[]>(
-            // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-            // "http://localhost:8080/api/products",
-            "https://bluejund.com:8443/api/products",
-          )
-        );
+        // console.log("get request");
+        // console.log(
+        //   this.http.get<Product[]>(
+        //     // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
+        //     // "http://localhost:8080/api/products",
+        //     "https://bluejund.com:8443/api/products",
+        //   )
+        // );
         return this.http.get<Product[]>(
           // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
           // "http://localhost:8080/api/products",
@@ -122,7 +122,7 @@ export class ProductEffects {
           // );
           return this.http.post(
             // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-            "http://localhost:8080/api/products",
+            "https://bluejund.com:8443/api/products",
             // {
             //   name: "6",
             //   description: "6",
