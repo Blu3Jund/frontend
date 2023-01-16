@@ -56,12 +56,14 @@ export class ProductEffects {
         console.log(
           this.http.get<Product[]>(
             // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-            "http://localhost:8080/api/products"
+            // "http://localhost:8080/api/products",
+            "http://bluejund.com:8080/api/products",
           )
         );
         return this.http.get<Product[]>(
           // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-          "http://localhost:8080/api/products"
+          // "http://localhost:8080/api/products",
+          "http://bluejund.com:8080/api/products",
         );
       }),
       map((products) => {
