@@ -15,6 +15,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[];
   subscription: Subscription;
 
+  isAuthenticated = false;
+  private userSub: Subscription;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -22,6 +25,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.userSub = this.store
+    .select("auth")
+    .pipe(map((authState) => authState.user))
+    .subscribe((user) => {
+      this.isAuthenticated = !!user;
+    });
     this.subscription = this.store
       .select("products")
       .pipe(map((productsState) => productsState.products))
@@ -36,5 +45,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.userSub.unsubscribe();
   }
 }

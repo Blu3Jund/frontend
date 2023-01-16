@@ -28,7 +28,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   selectedFilesItem?: File[] = [];
   currentFileItem?: File;
   routerSub: Subscription;
-
+  private userSub: Subscription;
+  isAuthenticated = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,6 +39,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.userSub = this.store
+    .select("auth")
+    .pipe(map((authState) => authState.user))
+    .subscribe((user) => {
+      this.isAuthenticated = !!user;
+    });
     this.route.params
       .pipe(
         map((params) => {
@@ -127,5 +134,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     if (this.routerSub) {
       this.routerSub.unsubscribe();
     }
+    this.userSub.unsubscribe();
   }
 }

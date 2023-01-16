@@ -11,10 +11,11 @@ const routes: Routes = [
   {
     path: "",
     component: ProductsComponent,
-    canActivate: [AuthGuardService],
+
     children: [
       { path: "", component: ProductStartComponent },
-      { path: "new", component: ProductEditComponent },
+      { path: "new", component: ProductEditComponent,
+        canActivate: [AuthGuardService],},
       {
         path: ":id",
         component: ProductDetailComponent,
@@ -23,6 +24,7 @@ const routes: Routes = [
       {
         path: ":id/edit",
         component: ProductEditComponent,
+        canActivate: [AuthGuardService],
         resolve: [ProductsResolverService],
       },
     ],
