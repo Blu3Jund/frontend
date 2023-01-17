@@ -6,6 +6,8 @@ import * as fromApp from "./store/app.reducer";
 import * as AuthActions from "./auth/store/auth.actions";
 import { isPlatformBrowser } from "@angular/common";
 
+import * as ProductActions from "./products/store/product.actions";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -27,10 +29,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.store.dispatch(AuthActions.AUTO_LOGIN());
-      console.log(
-        "This should only be visible on the client, and not on the server."
-      );
     }
-    console.log("This should be visible on both the client and the server.");
+    this.store.dispatch(ProductActions.FETCH_PRODUCTS());
   }
 }
