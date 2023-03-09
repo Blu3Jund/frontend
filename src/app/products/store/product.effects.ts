@@ -7,6 +7,7 @@ import { switchMap, map, withLatestFrom } from "rxjs/operators";
 import * as ProductsActions from "./product.actions";
 import * as fromApp from "../../store/app.reducer";
 import { Product } from "../../shared/models/product.model";
+import {environment} from "../../../environments/environment";
 
 function blobToB64String(blob: Blob) {
   // The full Blob Object can be seen
@@ -63,7 +64,7 @@ export class ProductEffects {
         return this.http.get<Product[]>(
           // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
           // "http://localhost:8080/api/products",
-          "https://bluejund.com/api/products",
+          `${environment.HOST_ADRESS}/api/products`,
         );
       }),
       map((products) => {
@@ -122,7 +123,7 @@ export class ProductEffects {
           // );
           return this.http.post(
             // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-            "https://bluejund.com/api/products",
+            `${environment.HOST_ADRESS}/api/products`,
             // {
             //   name: "6",
             //   description: "6",

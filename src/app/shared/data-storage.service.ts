@@ -6,6 +6,7 @@ import { Store } from "@ngrx/store";
 import * as fromApp from "../store/app.reducer";
 import * as ProductActions from "../products/store/product.actions";
 import { Product } from "./models/product.model";
+import {environment} from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class DataStorageService {
@@ -21,7 +22,7 @@ export class DataStorageService {
       .put(
         // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
         // "http://localhost:8080/api/products",
-        "https://bluejund.com/api/products",
+        `${environment.HOST_ADRESS}/api/products`,
         products
       )
       .subscribe((response) => {
@@ -34,7 +35,7 @@ export class DataStorageService {
       .get<Product[]>(
         // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json"
         // "http://localhost:8080/api/products"
-        "https://bluejund.com/api/products"
+        `${environment.HOST_ADRESS}/api/products`
       )
       .pipe(
         map((products) => {
