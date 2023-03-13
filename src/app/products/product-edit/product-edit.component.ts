@@ -7,7 +7,7 @@ import * as fromApp from "../../store/app.reducer";
 import * as ProductsActions from "../store/product.actions";
 import { map } from "rxjs/operators";
 import { Observable, Subscription } from "rxjs";
-import { Upload } from "../../shared/models/upload.model";
+import { Upload } from "../../shared/models/image.model";
 import { Product } from "../../shared/models/product.model";
 
 @Component({

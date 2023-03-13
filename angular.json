@@ -205,5 +205,8 @@
       }
     }
   },
-  "defaultProject": "ngrx-create-functions-syntax"
+  "defaultProject": "ngrx-create-functions-syntax",
+  "cli": {
+    "analytics": false
+  }
 }

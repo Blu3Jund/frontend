@@ -1,73 +1,75 @@
 <div class="row">
-	<div class="col-xs-12">
-		<img
-			src="{{productImage}}"
-			alt="X"
-			class="img-responsive"
-			style="max-height: 200px">
-	</div>
+  <div class="col-xs-12">
+    <img
+      [src]="product.images[0].image"
+      [alt]="product.images[0].image_name"
+      class="img-responsive"
+      style="max-height: 200px">
+  </div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
-		<h1>{{product.name}}</h1>
-	</div>
+  <div class="col-xs-12">
+    <h1>{{product.name}}</h1>
+  </div>
 </div>
 <div class="row" *ngIf="isAuthenticated">
-	<div class="col-xs-12">
-		<div
-			class="btn-group"
-			appDropdown>
-			<button
-				type="button"
-				class="btn btn-primary dropdown-toggle">
-				Manage Product <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li *ngIf="product.items.length > 0"><a (click)="onAddToShoppingList()" style="cursor: pointer;">Add all to Shopping List</a></li>
-				<li><a style="cursor: pointer;" (click)="onEditProduct()">Edit Product</a></li>
-				<li><a style="cursor: pointer;" (click)="onDeleteProduct()">Delete Product</a></li>
-			</ul>
-		</div>
-	</div>
+  <div class="col-xs-12">
+    <div
+      class="btn-group"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Manage Product <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngIf="product.items.length > 0"><a (click)="onAddToShoppingList()"
+                                                style="cursor: pointer;">Add all to Shopping
+          List</a></li>
+        <li><a style="cursor: pointer;" (click)="onEditProduct()">Edit Product</a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteProduct()">Delete Product</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
-		{{product.description}}
-	</div>
+  <div class="col-xs-12">
+    {{product.description}}
+  </div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
-		<ul class="list-group">
-			<div class="pull-left">
-				<li
-					class="list-group-item clearfix"
-					*ngFor="let item of product.items; let i = index">
-					<div class="pull-left">
-						<h4 class="list-group-item-heading pull-left">
-							Price: {{item.price}}  | Stock: {{item.quantity_in_stock}}
-						</h4>
-						<p class="list-group-item-text">
-							SKU: {{item.sku}} | Variations: {{item.variations}}
-						</p>
-					</div>
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <div class="pull-left">
+        <li
+          class="list-group-item clearfix"
+          *ngFor="let item of product.items; let i = index">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading pull-left">
+              Price: {{item.price}}  | Stock: {{item.quantity_in_stock}}
+            </h4>
+            <p class="list-group-item-text">
+              SKU: {{item.sku}} | Variations: {{item.variations}}
+            </p>
+          </div>
 
-					<span class="pull-right">
+          <span class="pull-right">
 						<img
-							[src]="itemImages.get(i)"
-							class="right"
-							style="max-height: 100px"
-							alt=""
-						/>
+              [src]="itemImages.get(i)"
+              class="right"
+              style="max-height: 100px"
+              alt=""
+            />
 						<img
-							class="btn btn-success"
-							src="assets/icons/Web/free-add-to-cart-icon-3046-thumb.png"
-							(click)="onAddSingleToShoppingList(i)"
-							style="max-height: 50px"
-							alt="Add to Shopping Cart"
-						/>
+              class="btn btn-success"
+              src="assets/icons/Web/free-add-to-cart-icon-3046-thumb.png"
+              (click)="onAddSingleToShoppingList(i)"
+              style="max-height: 50px"
+              alt="Add to Shopping Cart"
+            />
 					</span>
-				</li>
-			</div>
-		</ul>
-	</div>
+        </li>
+      </div>
+    </ul>
+  </div>
 </div>

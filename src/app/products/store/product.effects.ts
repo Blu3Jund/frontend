@@ -53,17 +53,7 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(ProductsActions.FETCH_PRODUCTS),
       switchMap(() => {
-        // console.log("get request");
-        // console.log(
-        //   this.http.get<Product[]>(
-        //     // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-        //     // "http://localhost:8080/api/products",
-        //     "https://bluejund.com:8443/api/products",
-        //   )
-        // );
         return this.http.get<Product[]>(
-          // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-          // "http://localhost:8080/api/products",
           `${environment.HOST_ADRESS}/api/products`,
         );
       }),
@@ -87,54 +77,8 @@ export class ProductEffects {
         ofType(ProductsActions.STORE_PRODUCTS),
         withLatestFrom(this.store.select("products")),
         switchMap(([actionData, productsState]) => {
-          // const prod = productsState.products.forEach((product) => {
-          //   const prodUpload = blobToB64String(product.upload.file);
-          //
-          //   const productEdited = {
-          //     ...product,
-          //     upload: {
-          //       ...product.upload,
-          //       file: prodUpload,
-          //     },
-          //     items: {},
-          //   };
-          //   console.log("prod edit ");
-          //   console.log(productEdited);
-          //
-          //   return productEdited;
-          // });
-          //
-          // // console.log("actionData");
-          // // console.log(actionData);
-          // console.log("product");
-          // console.log(JSON.stringify(productsState.products));
-          // console.log("parsed prod");
-          // console.log(prod);
-          // blobToB64String(productsState.products[0].upload.file);
-          //
-          // productsState.products;
-          // console.log("put req");
-          // console.log(
-          //   this.http.post(
-          //     // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-          //     "http://localhost:8080/api/products",
-          //     productsState.products
-          //   )
-          // );
           return this.http.post(
-            // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
             `${environment.HOST_ADRESS}/api/products`,
-            // {
-            //   name: "6",
-            //   description: "6",
-            //   items: [],
-            //   categories: [],
-            //   upload: {
-            //     file_name: "pngwing.com.png",
-            //     file: "JSON.stringify(new Blob())",
-            //     upload_time: "2023-01-13T00:59:59.335Z",
-            //   },
-            // }
             productsState.products,
             {
               headers: {
