@@ -1,17 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import * as ProductActions from "./store/product.actions";
-import {Store} from "@ngrx/store";
-import * as fromApp from "../store/app.reducer";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-products",
-  templateUrl: "./products.component.html",
-  styleUrls: ["./products.component.css"],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    true;
     // this.store.dispatch(ProductActions.FETCH_PRODUCTS());
   }
 }

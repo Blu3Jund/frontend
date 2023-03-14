@@ -1,7 +1,7 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import * as ShoppingListActions from "./shopping-list.actions";
-import { Item } from "../../shared/models/item.model";
-import { Product } from "../../shared/models/product.model";
+import { Action, createReducer, on } from '@ngrx/store';
+import * as ShoppingListActions from './shopping-list.actions';
+import { Item } from '../../shared/models/item.model';
+import { Product } from '../../shared/models/product.model';
 
 export interface State {
   product: Product;
@@ -10,11 +10,8 @@ export interface State {
 }
 
 const initialState: State = {
-  product: new Product("1", "1", "1", null, null, null),
-  items: [
-    new Item("sku1", 9, 19.99, undefined, []),
-    new Item("sku2", 9, 19.99, undefined, []),
-  ],
+  product: new Product('1', '1', '1', null, null, null),
+  items: [new Item('sku1', 9, 19.99, undefined, []), new Item('sku2', 9, 19.99, undefined, [])],
   editedItemIndex: -1,
 };
 
@@ -36,7 +33,7 @@ const _shoppingListReducer = createReducer(
     ...state,
     editedItemIndex: -1,
     items: state.items.map((item, index) =>
-      index === state.editedItemIndex ? { ...action.item } : item
+      index === state.editedItemIndex ? { ...action.item } : item,
     ),
   })),
 
@@ -53,7 +50,7 @@ const _shoppingListReducer = createReducer(
   on(ShoppingListActions.STOP_EDIT, (state) => ({
     ...state,
     editIndex: -1,
-  }))
+  })),
 );
 
 export function shoppingListReducer(state: State, action: Action) {

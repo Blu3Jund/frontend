@@ -1,15 +1,15 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Product } from "../../shared/models/product.model";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import * as fromApp from "../../store/app.reducer";
-import { Store } from "@ngrx/store";
-import { map } from "rxjs/operators";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Product } from '../../shared/models/product.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import * as fromApp from '../../store/app.reducer';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: "app-product-list",
-  templateUrl: "./product-list.component.html",
-  styleUrls: ["./product-list.component.css"],
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[];
@@ -21,18 +21,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<fromApp.AppState>
+    private store: Store<fromApp.AppState>,
   ) {}
 
   ngOnInit() {
     this.userSub = this.store
-    .select("auth")
-    .pipe(map((authState) => authState.user))
-    .subscribe((user) => {
-      this.isAuthenticated = !!user;
-    });
+      .select('auth')
+      .pipe(map((authState) => authState.user))
+      .subscribe((user) => {
+        this.isAuthenticated = !!user;
+      });
     this.subscription = this.store
-      .select("products")
+      .select('products')
       .pipe(map((productsState) => productsState.products))
       .subscribe((products: Product[]) => {
         this.products = products;
@@ -40,7 +40,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   onNewProduct() {
-    this.router.navigate(["new"], { relativeTo: this.route });
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 
   ngOnDestroy() {

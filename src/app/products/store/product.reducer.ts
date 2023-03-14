@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import * as ProductsActions from "./product.actions";
-import { Product } from "../../shared/models/product.model";
+import { Action, createReducer, on } from '@ngrx/store';
+import * as ProductsActions from './product.actions';
+import { Product } from '../../shared/models/product.model';
 
 export interface State {
   products: Product[];
@@ -21,7 +21,7 @@ const _productReducer = createReducer(
   on(ProductsActions.UPDATE_PRODUCT, (state, action) => ({
     ...state,
     products: state.products.map((product, index) =>
-      index === action.index ? { ...action.product } : product
+      index === action.index ? { ...action.product } : product,
     ),
   })),
 
@@ -33,7 +33,7 @@ const _productReducer = createReducer(
   on(ProductsActions.SET_PRODUCTS, (state, action) => ({
     ...state,
     products: [...action.products],
-  }))
+  })),
 );
 
 export function productReducer(state: State, action: Action) {

@@ -1,17 +1,17 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { DataStorageService } from "../shared/data-storage.service";
-import { AuthService } from "../auth/auth.service";
-import { Subscription } from "rxjs";
-import { Store } from "@ngrx/store";
-import { map } from "rxjs/operators";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DataStorageService } from '../shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 
-import * as fromApp from "../store/app.reducer";
-import * as AuthActions from "../auth/store/auth.actions";
-import * as ProductActions from "../products/store/product.actions";
+import * as fromApp from '../store/app.reducer';
+import * as AuthActions from '../auth/store/auth.actions';
+import * as ProductActions from '../products/store/product.actions';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
+  selector: 'app-header',
+  templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
@@ -20,12 +20,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private dataStorageService: DataStorageService,
     private authService: AuthService,
-    private store: Store<fromApp.AppState>
+    private store: Store<fromApp.AppState>,
   ) {}
 
   ngOnInit() {
     this.userSub = this.store
-      .select("auth")
+      .select('auth')
       .pipe(map((authState) => authState.user))
       .subscribe((user) => {
         this.isAuthenticated = !!user;

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   firebaseAPIKey: 'AIzaSyDb0xTaRAoxyCgvaDF3kk5VYOsTwB_3o7Y',
-  HOST_ADRESS: "https://bluejund.com"
+  HOST_ADRESS: 'https://bluejund.com',
 };

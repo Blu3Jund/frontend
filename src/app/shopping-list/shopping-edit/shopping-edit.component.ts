@@ -1,18 +1,18 @@
-import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Subscription } from "rxjs";
-import { Store } from "@ngrx/store";
-import * as ShoppingListActions from "../store/shopping-list.actions";
-import * as fromApp from "../../store/app.reducer";
-import { Item } from "../../shared/models/item.model";
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as ShoppingListActions from '../store/shopping-list.actions';
+import * as fromApp from '../../store/app.reducer';
+import { Item } from '../../shared/models/item.model';
 
 @Component({
-  selector: "app-shopping-edit",
-  templateUrl: "./shopping-edit.component.html",
-  styleUrls: ["./shopping-edit.component.css"],
+  selector: 'app-shopping-edit',
+  templateUrl: './shopping-edit.component.html',
+  styleUrls: ['./shopping-edit.component.css'],
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
-  @ViewChild("f", { static: false }) slForm: NgForm;
+  @ViewChild('f', { static: false }) slForm: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItem: Item;
@@ -20,24 +20,22 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.subscription = this.store
-      .select("shoppingList")
-      .subscribe((stateData) => {
-        const index = stateData.editedItemIndex;
-        if (index > -1) {
-          this.editMode = true;
-          this.editedItem = stateData.items[index];
-          this.slForm.setValue({
-            sku: this.editedItem.sku,
-            quantity_in_stock: this.editedItem.quantity_in_stock,
-            price: this.editedItem.price,
-            upload: this.editedItem.upload,
-            variations: this.editedItem.variations,
-          });
-        } else {
-          this.editMode = false;
-        }
-      });
+    this.subscription = this.store.select('shoppingList').subscribe((stateData) => {
+      const index = stateData.editedItemIndex;
+      if (index > -1) {
+        this.editMode = true;
+        this.editedItem = stateData.items[index];
+        this.slForm.setValue({
+          sku: this.editedItem.sku,
+          quantity_in_stock: this.editedItem.quantity_in_stock,
+          price: this.editedItem.price,
+          images: this.editedItem.image,
+          variations: this.editedItem.variations,
+        });
+      } else {
+        this.editMode = false;
+      }
+    });
   }
 
   onSubmit(form: NgForm) {
@@ -47,7 +45,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       value.quantity_in_stock,
       value.price,
       value.upload,
-      value.variations
+      value.variations,
     );
     if (this.editMode) {
       this.store.dispatch(ShoppingListActions.UPDATE_ITEM({ item }));

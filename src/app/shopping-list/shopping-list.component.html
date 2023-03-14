@@ -1,35 +1,23 @@
 <div class="row">
-	<div class="col-xs-10">
-		<hr>
-		<ul class="list-group">
-			<div *ngFor="let item of (items | async).items; let i = index">
-				<a
-					class="list-group-item clearfix"
-					style="cursor: pointer"
-				>
-					<div class="pull-left">
-						<h4 class="list-group-item-heading">
-							{{(product | async).product.name}}
-						</h4>
-						<p class="list-group-item-text">{{item.sku}} ({{item.quantity_in_stock}}
-							) {{item.price}} {{item.variations}}</p>
-					</div>
-					<span class="pull-right">
-						<img
-							[src]="itemImages.get(i)"
-							style="max-height: 100px"
-							alt=""
-						/>
-						<button
-							class="btn btn-danger"
-							type="button"
-							(click)="onDeleteItem(i,{item})"
-						>X
-					</button>
-					</span>
-				</a>
-
-			</div>
-		</ul>
-	</div>
+  <div class="col-xs-10">
+    <hr />
+    <ul class="list-group">
+      <div *ngFor="let item of (items | async).items; let i = index">
+        <a class="list-group-item clearfix" style="cursor: pointer">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading">
+              {{ (product | async).product.name }}
+            </h4>
+            <p class="list-group-item-text">
+              {{ item.sku }} ({{ item.quantity_in_stock }} ) {{ item.price }} {{ item.variations }}
+            </p>
+          </div>
+          <span class="pull-right">
+            <img [src]="itemImages.get(i)" style="max-height: 100px" alt="" />
+            <button class="btn btn-danger" type="button" (click)="onDeleteItem(i,{item})">X</button>
+          </span>
+        </a>
+      </div>
+    </ul>
+  </div>
 </div>

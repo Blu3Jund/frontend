@@ -1,16 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { Store } from "@ngrx/store";
-import * as ShoppingListActions from "./store/shopping-list.actions";
-import * as fromApp from "../store/app.reducer";
-import { Item } from "../shared/models/item.model";
-import { Product } from "../shared/models/product.model";
-import { NavigationEnd } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as ShoppingListActions from './store/shopping-list.actions';
+import * as fromApp from '../store/app.reducer';
+import { Item } from '../shared/models/item.model';
+import { Product } from '../shared/models/product.model';
 
 @Component({
-  selector: "app-shopping-list",
-  templateUrl: "./shopping-list.component.html",
-  styleUrls: ["./shopping-list.component.css"],
+  selector: 'app-shopping-list',
+  templateUrl: './shopping-list.component.html',
+  styleUrls: ['./shopping-list.component.css'],
 })
 export class ShoppingListComponent implements OnInit {
   items: Observable<{ items: Item[] }>;
@@ -25,8 +24,8 @@ export class ShoppingListComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.product = this.store.select("shoppingList");
-    this.items = this.store.select("shoppingList");
+    this.product = this.store.select('shoppingList');
+    this.items = this.store.select('shoppingList');
 
     this.product.subscribe((product) => (this.prod = product.product));
     this.items.subscribe((items) => (this.ite = items.items));
