@@ -22,7 +22,7 @@ export class DataStorageService {
       .put(
         // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json",
         // "http://localhost:8080/api/products",
-        `${environment.HOST_ADRESS}/api/products`,
+        `${environment.HOST_ADDRESS}/api/products`,
         products,
       )
       .subscribe((response) => {
@@ -35,7 +35,7 @@ export class DataStorageService {
       .get<Product[]>(
         // "https://iprwc-f02e7-default-rtdb.europe-west1.firebasedatabase.app/products.json"
         // "http://localhost:8080/api/products"
-        `${environment.HOST_ADRESS}/api/products`,
+        `${environment.HOST_ADDRESS}/api/products`,
       )
       .pipe(
         map((products) => {

@@ -42,6 +42,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.store.dispatch(ProductActions.FETCH_PRODUCTS());
   }
 
+  onMockData() {
+    this.store.dispatch(ProductActions.MOCK_PRODUCTS());
+  }
+  onDeleteData() {
+    this.store.dispatch(ProductActions.DELETE_PRODUCTS());
+  }
+
   onLogout() {
     this.store.dispatch(AuthActions.LOGOUT());
   }

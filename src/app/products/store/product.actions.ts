@@ -33,3 +33,5 @@ export const SET_PRODUCTS = createAction(
 export const FETCH_PRODUCTS = createAction('[Product] Fetch Products');
 
 export const STORE_PRODUCTS = createAction('[Product] Store Products');
+export const MOCK_PRODUCTS = createAction('[Product] Mock Products');
+export const DELETE_PRODUCTS = createAction('[Product] Delete Products');

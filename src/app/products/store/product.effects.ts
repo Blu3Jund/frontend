@@ -11,11 +11,34 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ProductEffects {
+  deleteProducts$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ProductsActions.DELETE_PRODUCTS),
+        switchMap(() => {
+          return this.http.delete(`${environment.HOST_ADDRESS}/api/products`);
+        }),
+      ),
+    { dispatch: false },
+  );
+
+  // TODO finish this
+
+  // mockProducts$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(ProductsActions.MOCK_PRODUCTS),
+  //     switchMap(() => {
+  //       return this.http.
+  //     })
+  //   )
+  //
+  // );
+
   fetchProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.FETCH_PRODUCTS),
       switchMap(() => {
-        return this.http.get<Product[]>(`${environment.HOST_ADRESS}/api/products`);
+        return this.http.get<Product[]>(`${environment.HOST_ADDRESS}/api/products`);
       }),
       map((products) => {
         return products.map((product) => {
@@ -37,11 +60,15 @@ export class ProductEffects {
         ofType(ProductsActions.STORE_PRODUCTS),
         withLatestFrom(this.store.select('products')),
         switchMap(([actionData, productsState]) => {
-          return this.http.post(`${environment.HOST_ADRESS}/api/products`, productsState.products, {
-            headers: {
-              'Content-Type': 'application/json',
+          return this.http.post(
+            `${environment.HOST_ADDRESS}/api/products`,
+            productsState.products,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
             },
-          });
+          );
         }),
       ),
     { dispatch: false },
