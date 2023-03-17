@@ -28,12 +28,12 @@ export class ProductEffects {
   //   this.actions$.pipe(
   //     ofType(ProductsActions.MOCK_PRODUCTS),
   //     switchMap(() => {
-  //       return this.http.
-  //     })
-  //   )
-  //
+  //       return this.http.post();
+  //     }),
+  //   ),
   // );
 
+  // This might be wrong
   fetchProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.FETCH_PRODUCTS),
