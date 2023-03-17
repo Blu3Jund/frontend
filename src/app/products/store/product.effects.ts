@@ -8,7 +8,7 @@ import * as ProductsActions from './product.actions';
 import * as fromApp from '../../store/app.reducer';
 import { Product } from '../../shared/models/product.model';
 import { environment } from '../../../environments/environment';
-import {mockData} from "../../shared/mock-data";
+import { mockData } from '../../shared/mock-data';
 
 @Injectable()
 export class ProductEffects {
@@ -27,22 +27,19 @@ export class ProductEffects {
 
   //
 
-  mockProducts$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ProductsActions.MOCK_PRODUCTS),
-      withLatestFrom(this.store.select('products')),
-      switchMap(([actionData, productsState]) => {
-        return this.http.post(
-          `${environment.HOST_ADDRESS}/api/products`,
-          mockData,
-          {
+  mockProducts$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ProductsActions.MOCK_PRODUCTS),
+        withLatestFrom(this.store.select('products')),
+        switchMap(([actionData, productsState]) => {
+          return this.http.post(`${environment.HOST_ADDRESS}/api/products`, mockData, {
             headers: {
               'Content-Type': 'application/json',
             },
-          },
-        )
-      }),
-    ),
+          });
+        }),
+      ),
     { dispatch: false },
   );
 
