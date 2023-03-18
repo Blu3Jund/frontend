@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 
 import * as fromProducts from './store/product.reducer';
+import { ProductImageContainerTsComponent } from './product-image-container.ts/product-image-container.ts.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import * as fromProducts from './store/product.reducer';
     ProductItemComponent,
     ProductStartComponent,
     ProductEditComponent,
+    ProductImageContainerTsComponent,
   ],
   imports: [
     RouterModule,
