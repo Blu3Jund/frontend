@@ -1,0 +1,5 @@
+.item {
+  flex: 1 1 200px; /* grow factor */
+  margin: 10px;
+  background-color: lightblue;
+}

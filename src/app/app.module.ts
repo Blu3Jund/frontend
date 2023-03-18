@@ -21,7 +21,7 @@ import { HomeComponent } from './home/home.component';
 // import { ProductEffects } from './products/store/product.effects';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,

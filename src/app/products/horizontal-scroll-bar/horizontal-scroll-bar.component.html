@@ -1,0 +1,10 @@
+<!--<div class="scroll-container">-->
+<div class="container-fluid container">
+<!--  <div class="product-container">-->
+  <div class="row flex-row flex-nowrap">
+    <app-product-card
+      *ngFor="let product of products; let i = index"
+      [product]="product">
+    </app-product-card>
+  </div>
+</div>

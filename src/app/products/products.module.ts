@@ -12,7 +12,9 @@ import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 
 import * as fromProducts from './store/product.reducer';
-import { ProductImageContainerTsComponent } from './product-image-container.ts/product-image-container.ts.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { HorizontalScrollBarComponent } from './horizontal-scroll-bar/horizontal-scroll-bar.component';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,6 @@ import { ProductImageContainerTsComponent } from './product-image-container.ts/p
     ProductItemComponent,
     ProductStartComponent,
     ProductEditComponent,
-    ProductImageContainerTsComponent,
   ],
   imports: [
     RouterModule,
@@ -31,5 +32,6 @@ import { ProductImageContainerTsComponent } from './product-image-container.ts/p
     SharedModule,
     StoreModule.forFeature('products', fromProducts.productReducer),
   ],
+  exports: [ProductListComponent],
 })
 export class ProductsModule {}

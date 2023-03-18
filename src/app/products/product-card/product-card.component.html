@@ -1,0 +1,11 @@
+<a
+  style="cursor: pointer"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix"
+>
+  <div class="item">
+    <app-product-image-container [product]="product"></app-product-image-container>
+    <p>{{product.name}}</p>
+  </div>
+</a>
