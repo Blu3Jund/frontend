@@ -1,10 +1,13 @@
-<!--<div class="scroll-container">-->
-<div class="container-fluid container">
-<!--  <div class="product-container">-->
-  <div class="row flex-row flex-nowrap">
-    <app-product-card
-      *ngFor="let product of products; let i = index"
-      [product]="product">
-    </app-product-card>
+<div class="product-grid">
+  <div class="product-cell" *ngFor="let product of products.slice(startIndex, endIndex); let i = index">
+    <div class="product-row">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
   </div>
+</div>
+
+<div class="pagination-controls">
+  <button class="prev-button" [disabled]="currentPage === 1" (click)="prevPage()">Prev</button>
+  <span class="page-number">{{ currentPage }} / {{ totalPages }}</span>
+  <button class="next-button" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
 </div>

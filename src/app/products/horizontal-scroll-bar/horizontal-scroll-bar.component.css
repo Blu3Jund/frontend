@@ -1,34 +1,40 @@
-.scroll-container {
-
-  white-space: nowrap;
-  overflow-x: scroll;
+.product-grid {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.container {
+.product-row {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  max-width: 100vw; /* set maximum width to screen size */
+  width: 100%;
 }
 
-row > .col-xs-3 {
-  display:flex;
-  flex: 0 0 25%;
-  max-width: 25%
+.product-cell {
+  width: 19.8%;
+  margin-bottom: 20px;
 }
 
-.flex-nowrap {
-  -webkit-flex-wrap: nowrap!important;
-  -ms-flex-wrap: nowrap!important;
-  flex-wrap: nowrap!important;
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
-.flex-row {
-  display:flex;
-  -webkit-box-orient: horizontal!important;
-  -webkit-box-direction: normal!important;
-  -webkit-flex-direction: row!important;
-  -ms-flex-direction: row!important;
-  flex-direction: row!important;
+
+.prev-button,
+.next-button {
+  background: #fff;
+  border: 1px solid #555;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.prev-button[disabled],
+.next-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-number {
+  margin: 0 20px;
+  font-weight: bold;
 }
