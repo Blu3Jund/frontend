@@ -1,0 +1,35 @@
+.navbar {
+  background-color: firebrick;
+  /*max-width: 50%;*/
+
+  border-radius: 25px;
+  /*border: 2px solid black;*/
+  /*box-shadow: 0 0 10px #8B0000,*/
+  /*0 0 20px #8B0000,*/
+  /*0 0 30px #8B0000;*/
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.navbar > * {
+  justify-content: center;
+}
+/*.navbar-dark .navbar-nav .nav-link {*/
+/*  color: #fff;*/
+/*}*/
+
+.navbar-text-color{
+  color: #fff; /* Change to the desired color */
+}
+
+a {
+  color: cornsilk;
+  text-decoration: none;
+}
+
+ul.nav a:hover,
+ul.nav li.active li.hover a,
+ul.nav a:active { color: black !important;
+background-color: red !important;}

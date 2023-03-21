@@ -1,6 +1,7 @@
 .item {
   flex: 1 1 200px; /* grow factor */
   margin: 10px;
+
 }
 
 .futuristic-button {
@@ -21,13 +22,13 @@
   letter-spacing: 2px;
   border-bottom: 2px solid #000;
   display: inline-block;
-  padding-bottom: 5px;
+  padding: 5px;
   margin-bottom: 10px;
   background-color: transparent;
 }
 
 .futuristic-button:hover {
-  background-color: red;
+  /*background-color: red;*/
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
 }
@@ -40,3 +41,8 @@
 /*  transform: translateY(1px);*/
 /*  box-shadow: none;*/
 /*}*/
+
+.product-card {
+  width: 175px;
+
+}

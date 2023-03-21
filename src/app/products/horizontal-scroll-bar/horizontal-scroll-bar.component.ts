@@ -40,9 +40,10 @@ import { Product } from '../../shared/models/product.model';
 })
 export class HorizontalScrollBarComponent {
   @Input() products: Product[];
+  @Input()
   // products: Product[] = [];
   currentPage: number = 1;
-  pageSize: number = 25;
+  pageSize: number = 10;
 
   get startIndex() {
     return (this.currentPage - 1) * this.pageSize;
