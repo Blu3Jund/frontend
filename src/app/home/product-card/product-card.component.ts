@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../shared/models/product.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
   selector: 'app-product-card',
@@ -9,4 +12,10 @@ import { Product } from '../../shared/models/product.model';
 export class ProductCardComponent {
   @Input() product: Product;
   @Input() index: number;
+
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  // onClick() {
+  //   this.router.navigate([`/home/${this.product.id}`]);
+  // }
 }

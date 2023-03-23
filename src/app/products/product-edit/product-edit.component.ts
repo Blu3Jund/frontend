@@ -53,7 +53,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       );
     } else {
       this.store.dispatch(ProductsActions.ADD_PRODUCT({ product: this.productForm.value }));
-      console.log(this.productForm.value);
     }
 
     this.onCancel();

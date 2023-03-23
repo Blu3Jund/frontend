@@ -30,7 +30,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.product?.image);
     this.userSub = this.store
       .select('auth')
       .pipe(map((authState) => authState.user))

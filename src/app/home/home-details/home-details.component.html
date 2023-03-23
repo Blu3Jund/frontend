@@ -1,1 +1,64 @@
-<p>home-details works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      [src]="product.image?.image_url"
+      [alt]="product.image?.image_name"
+      class="img-responsive"
+      style="max-height: 200px"
+    />
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ product.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group" appDropdown>
+          <button class="btn btn-info" (click)="onAddToShoppingList()" style="cursor: pointer">Add all items to the Shopping List</button>
+    </div>
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-xs-12">
+    {{ product.description }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <div class="pull-left">
+        <li class="list-group-item clearfix" *ngFor="let item of product.items; let i = index">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading pull-left">
+              Price: {{ item.price }} | Stock: {{ item.quantity_in_stock }}
+            </h4>
+            <p class="list-group-item-text">
+              SKU: {{ item.sku }} | Variations: {{ item.variations }}
+            </p>
+          </div>
+
+          <span class="pull-right">
+            <img
+              [src]="item.image?.image_url"
+              [alt]="item.image?.image_name"
+              class="right"
+              style="max-height: 100px"
+              alt=""
+            />
+            <img
+              class="btn btn-success"
+              src="assets/icons/Web/free-add-to-cart-icon-3046-thumb.png"
+              (click)="onAddSingleToShoppingList(i)"
+              style="max-height: 50px"
+              alt="Add to Shopping Cart"
+            />
+          </span>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

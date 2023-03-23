@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe((products: Product[]) => {
         this.products = products;
       });
-    console.log(this.products);
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

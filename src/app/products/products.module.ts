@@ -12,8 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 
 import * as fromProducts from './store/product.reducer';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { HorizontalScrollBarComponent } from './horizontal-scroll-bar/horizontal-scroll-bar.component';
+import { ProductCardComponent } from '../home/product-card/product-card.component';
+import { HorizontalScrollBarComponent } from '../home/horizontal-scroll-bar/horizontal-scroll-bar.component';
 import { HomeModule } from '../home/home.module';
 
 @NgModule({
@@ -32,6 +32,6 @@ import { HomeModule } from '../home/home.module';
     SharedModule,
     StoreModule.forFeature('products', fromProducts.productReducer),
   ],
-  exports: [ProductListComponent],
+  exports: [ProductListComponent, ProductItemComponent],
 })
 export class ProductsModule {}
