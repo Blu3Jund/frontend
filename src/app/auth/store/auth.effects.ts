@@ -8,23 +8,32 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user.model';
 import { AuthService } from '../auth.service';
+import { environment } from '../../../environments/environment';
 
 export interface AuthResponseData {
   idToken: string;
   email: string;
+  admin: boolean;
   refreshToken: string;
   expiresIn: string;
   localId: string;
   registered?: boolean;
 }
 
-const handleAuthentication = (expiresIn: number, email: string, userId: string, token: string) => {
+const handleAuthentication = (
+  expiresIn: number,
+  email: string,
+  admin: boolean,
+  userId: string,
+  token: string,
+) => {
   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-  const user = new User(email, userId, token, expirationDate);
+  const user = new User(email, userId, admin, token, expirationDate);
   localStorage.setItem('userData', JSON.stringify(user));
   return AuthActions.AUTHENTICATE_SUCCESS({
     email,
     userId,
+    admin,
     token,
     expirationDate,
     redirect: true,
@@ -58,10 +67,11 @@ export class AuthEffects {
       switchMap((action) => {
         return this.http
           .post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDmvLcEtEQ3lCxCRZ1hQLzj53JI_4Iy55U',
+            `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`,
             {
               email: action.email,
               password: action.password,
+              admin: false,
               returnSecureToken: true,
             },
           )
@@ -73,11 +83,13 @@ export class AuthEffects {
               return handleAuthentication(
                 +resData.expiresIn,
                 resData.email,
+                resData.admin,
                 resData.localId,
                 resData.idToken,
               );
             }),
             catchError((errorRes) => {
+              console.log(errorRes);
               return handleError(errorRes);
             }),
           );
@@ -91,7 +103,7 @@ export class AuthEffects {
       switchMap((action) => {
         return this.http
           .post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDmvLcEtEQ3lCxCRZ1hQLzj53JI_4Iy55U',
+            `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`,
             {
               email: action.email,
               password: action.password,
@@ -106,6 +118,7 @@ export class AuthEffects {
               return handleAuthentication(
                 +resData.expiresIn,
                 resData.email,
+                resData.admin,
                 resData.localId,
                 resData.idToken,
               );
@@ -134,6 +147,7 @@ export class AuthEffects {
         const userData: {
           email: string;
           id: string;
+          admin: boolean;
           _token: string;
           _tokenExpirationDate: string;
         } = JSON.parse(localStorage.getItem('userData'));
@@ -144,6 +158,7 @@ export class AuthEffects {
         const loadedUser = new User(
           userData.email,
           userData.id,
+          userData.admin,
           userData._token,
           new Date(userData._tokenExpirationDate),
         );
@@ -156,6 +171,7 @@ export class AuthEffects {
           return AuthActions.AUTHENTICATE_SUCCESS({
             email: loadedUser.email,
             userId: loadedUser.id,
+            admin: loadedUser.admin,
             token: loadedUser.token,
             expirationDate: new Date(userData._tokenExpirationDate),
             redirect: false,

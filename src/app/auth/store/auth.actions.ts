@@ -21,6 +21,7 @@ export const AUTHENTICATE_SUCCESS = createAction(
   props<{
     email: string;
     userId: string;
+    admin: boolean;
     token: string;
     expirationDate: Date;
     redirect: boolean;

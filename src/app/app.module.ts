@@ -17,6 +17,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ProductEffects } from './products/store/product.effects';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import { ProductEffects } from './products/store/product.effects';
 
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
