@@ -1,11 +1,10 @@
-import { Image } from './image.model';
 import { Variation } from './variation.model';
 
 export interface ItemInterface {
   sku: string;
   quantity_in_stock: number;
   price: number;
-  image: Image;
+  image_url: string;
   variations: Variation[];
 }
 
@@ -14,7 +13,7 @@ export class Item implements ItemInterface {
     public sku: string,
     public quantity_in_stock: number,
     public price: number,
-    public image: Image,
+    public image_url: string,
     public variations: Variation[],
   ) {}
 }

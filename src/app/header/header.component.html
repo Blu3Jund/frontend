@@ -15,7 +15,7 @@
         <li routerLinkActive="active"><a routerLink="/products">Products</a></li>
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
       </ul>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li *ngIf="isAuthenticated">
           <a class="logout" style="cursor: pointer" (click)="onLogout()">Logout</a>
         </li>
@@ -33,3 +33,4 @@
     </div>
   </div>
 </nav>
+<hr>

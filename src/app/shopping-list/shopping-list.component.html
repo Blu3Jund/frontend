@@ -9,11 +9,11 @@
               {{ (product | async).product.name }}
             </h4>
             <p class="list-group-item-text">
-              {{ item.sku }} ({{ item.quantity_in_stock }} ) {{ item.price }} {{ item.variations }}
+              {{ item.sku }} ({{ item.quantity_in_stock }} ) {{ onFormatMoney(item.price) }} {{ item.variations }}
             </p>
           </div>
           <span class="pull-right">
-            <img [src]="itemImages.get(i)" style="max-height: 100px" alt="" />
+<!--            <img [src]="itemImages.get(i)" style="max-height: 100px" alt="" />-->
             <button class="btn btn-danger" type="button" (click)="onDeleteItem(i,{item})">X</button>
           </span>
         </a>

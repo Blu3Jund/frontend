@@ -29,7 +29,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
           sku: this.editedItem.sku,
           quantity_in_stock: this.editedItem.quantity_in_stock,
           price: this.editedItem.price,
-          images: this.editedItem.image,
+          image_url: this.editedItem.image_url,
           variations: this.editedItem.variations,
         });
       } else {

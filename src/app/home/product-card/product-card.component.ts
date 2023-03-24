@@ -3,6 +3,7 @@ import { Product } from '../../shared/models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
+import formatMoney from '../../../lib/formatMoney';
 
 @Component({
   selector: 'app-product-card',

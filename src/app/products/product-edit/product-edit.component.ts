@@ -67,7 +67,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           Validators.pattern(/^[1-9]+[0-9]*$/),
         ]),
         price: new FormControl(null, [Validators.required]),
-        image: new FormControl(null),
+        image_url: new FormControl(null),
         variations: new FormControl(null),
       }),
     );
@@ -93,7 +93,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   private initForm() {
     let productName = '';
     let productDescription = '';
-    let productImage = { imageUrl: '', imageName: '' };
+    let productImage = '';
     let productItems = new FormArray([]);
     let productCategories = new FormArray([]);
 
@@ -112,7 +112,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           this.product = product;
           productName = product.name;
           productDescription = product.description;
-          productImage = { imageUrl: product.image.image_url, imageName: product.image.image_name };
+          productImage = product.image_url;
 
           if (product.items) {
             let i = 0;
@@ -126,7 +126,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
                       Validators.pattern(/^[1-9]+[0-9]*$/),
                     ]),
                     price: new FormControl(item.price, [Validators.required]),
-                    image: new FormControl(item.image),
+                    image_url: new FormControl(item.image_url),
                     variations: new FormControl(item.variations),
                   }),
                 );
@@ -150,7 +150,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.productForm = new FormGroup({
       name: new FormControl(productName, Validators.required),
       description: new FormControl(productDescription, Validators.required),
-      image: new FormControl(productImage),
+      image_url: new FormControl(productImage),
       items: productItems,
       categories: productCategories,
     });

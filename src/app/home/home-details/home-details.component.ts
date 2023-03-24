@@ -7,6 +7,7 @@ import * as fromApp from '../../store/app.reducer';
 import { map, switchMap } from 'rxjs/operators';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import * as ProductsActions from '../../products/store/product.actions';
+import formatMoney from '../../../lib/formatMoney';
 
 @Component({
   selector: 'app-home-details',
@@ -29,6 +30,9 @@ export class HomeDetailsComponent implements OnInit, OnDestroy {
     // This is necessary to check for router changes (product-list item clicked)
   }
 
+  onFormatMoney(value: number): string {
+    return formatMoney(value);
+  }
   ngOnInit() {
     const productId = this.route.snapshot.params.id;
     this.productSub = this.store

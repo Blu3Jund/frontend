@@ -1,6 +1,5 @@
 // import mongoose from "mongoose";
 
-import { Image } from './image.model';
 import { Categories } from './categories.model';
 import { Item } from './item.model';
 
@@ -9,7 +8,7 @@ export class Product {
     public id: string,
     public name: string,
     public description: string,
-    public image: Image,
+    public image_url: string,
     public items: Item[],
     public categories: Categories[],
   ) {}

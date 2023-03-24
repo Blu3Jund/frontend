@@ -5,6 +5,7 @@ import * as ShoppingListActions from './store/shopping-list.actions';
 import * as fromApp from '../store/app.reducer';
 import { Item } from '../shared/models/item.model';
 import { Product } from '../shared/models/product.model';
+import formatMoney from '../../lib/formatMoney';
 
 @Component({
   selector: 'app-shopping-list',
@@ -31,6 +32,10 @@ export class ShoppingListComponent implements OnInit {
     this.items.subscribe((items) => (this.ite = items.items));
 
     this.onImageLoad();
+  }
+
+  onFormatMoney(value: number): string {
+    return formatMoney(value);
   }
 
   onDeleteItem(index: number, { item }) {

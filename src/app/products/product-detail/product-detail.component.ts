@@ -8,6 +8,7 @@ import * as ProductsActions from '../store/product.actions';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import formatMoney from '../../../lib/formatMoney';
 
 @Component({
   selector: 'app-product-detail',
@@ -27,6 +28,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private store: Store<fromApp.AppState>,
   ) {
     // This is necessary to check for router changes (product-list item clicked)
+  }
+
+  onFormatMoney(value: number): string {
+    return formatMoney(value);
   }
 
   ngOnInit() {
