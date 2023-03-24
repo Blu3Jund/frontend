@@ -21,6 +21,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   routerSub: Subscription;
   private userSub: Subscription;
   isAuthenticated = false;
+  itemAdded = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -76,7 +77,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         item: this.product.items[index],
       }),
     );
-    alert('Item added to Shopping List');
+    this.itemAdded[index] = true;
+    // alert('Item added to Shopping List');
   }
 
   onEditProduct() {

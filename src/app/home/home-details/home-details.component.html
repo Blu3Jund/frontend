@@ -47,13 +47,17 @@
               [alt]="item.sku"
               class="right"
               style="max-height: 100px"
-              alt=""
             />
-            <label
-              class="btn btn-success"
-              (click)="onAddSingleToShoppingList(i)"
-              style="max-height: 50px; margin: 10px;"
+            <label *ngIf="!itemAdded[i]"
+                   class="btn btn-info"
+                   (click)="onAddSingleToShoppingList(i)"
+                   style="max-height: 50px; margin: 10px;"
             >Add to Cart</label>
+            <label *ngIf="itemAdded[i]"
+                   class="btn btn-success"
+                   (click)="onAddSingleToShoppingList(i)"
+                   style="max-height: 50px; margin: 10px;"
+            >Added to Cart</label>
           </span>
         </li>
       </div>

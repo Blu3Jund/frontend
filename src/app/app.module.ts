@@ -18,6 +18,7 @@ import { ProductEffects } from './products/store/product.effects';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShoppingListEffects } from './shopping-list/store/shopping-list.effects';
 
 // import { ProductEffects } from './products/store/product.effects';
 
@@ -31,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     CoreModule,
     StoreModule.forRoot({ auth: fromAuth.authReducer }),
-    EffectsModule.forRoot([AuthEffects, ProductEffects]),
+    EffectsModule.forRoot([AuthEffects, ProductEffects, ShoppingListEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {

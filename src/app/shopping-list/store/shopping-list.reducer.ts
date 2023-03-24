@@ -1,18 +1,20 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as ShoppingListActions from './shopping-list.actions';
 import { Item } from '../../shared/models/item.model';
-import { Product } from '../../shared/models/product.model';
+import { Order } from '../../shared/models/order.model';
 
 export interface State {
-  product: Product;
   items: Item[];
   editedItemIndex: number;
+  order: { email: string; items: Item[] };
+  orders: Order[];
 }
 
 const initialState: State = {
-  product: new Product('1', '1', '1', null, null, null),
-  items: [new Item('sku1', 9, 19.99, undefined, []), new Item('sku2', 9, 19.99, undefined, [])],
+  items: [],
   editedItemIndex: -1,
+  order: { email: '', items: [] },
+  orders: [],
 };
 
 const _shoppingListReducer = createReducer(
@@ -50,6 +52,17 @@ const _shoppingListReducer = createReducer(
   on(ShoppingListActions.STOP_EDIT, (state) => ({
     ...state,
     editIndex: -1,
+  })),
+  on(ShoppingListActions.ADD_ORDER, (state, action) => ({
+    ...state,
+    order: {
+      email: action.email,
+      items: action.items,
+    },
+  })),
+  on(ShoppingListActions.SET_ORDERS, (state, action) => ({
+    ...state,
+    orders: [...action.orders],
   })),
 );
 

@@ -44,7 +44,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       value.sku,
       value.quantity_in_stock,
       value.price,
-      value.upload,
+      value.image,
       value.variations,
     );
     if (this.editMode) {

@@ -21,6 +21,10 @@ const appRoutes: Routes = [
       import('./shopping-list/shopping-list.module').then((m) => m.ShoppingListModule),
   },
   {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },

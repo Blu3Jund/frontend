@@ -6,6 +6,7 @@ import * as AuthActions from './auth/store/auth.actions';
 import { isPlatformBrowser } from '@angular/common';
 
 import * as ProductActions from './products/store/product.actions';
+import * as ShoppingListActions from './shopping-list/store/shopping-list.actions';
 
 @Component({
   selector: 'app-root',
@@ -27,5 +28,6 @@ export class AppComponent implements OnInit {
       this.store.dispatch(AuthActions.AUTO_LOGIN());
     }
     this.store.dispatch(ProductActions.FETCH_PRODUCTS());
+    this.store.dispatch(ShoppingListActions.FETCH_ORDERS());
   }
 }
