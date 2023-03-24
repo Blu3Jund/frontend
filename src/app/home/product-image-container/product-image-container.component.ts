@@ -6,11 +6,7 @@ import { Product } from '../../shared/models/product.model';
   templateUrl: './product-image-container.component.html',
   styleUrls: ['./product-image-container.component.css'],
 })
-export class ProductImageContainerComponent implements OnInit {
+export class ProductImageContainerComponent {
   @Input() product: Product;
   @Input() index: number;
-
-  ngOnInit() {
-    console.log(this.product);
-  }
 }

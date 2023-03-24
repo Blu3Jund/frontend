@@ -8,7 +8,7 @@ export class Product {
     public id: string,
     public name: string,
     public description: string,
-    public image_url: string,
+    public image: string,
     public items: Item[],
     public categories: Categories[],
   ) {}
