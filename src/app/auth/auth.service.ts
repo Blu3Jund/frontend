@@ -7,7 +7,6 @@ import * as AuthActions from '../auth/store/auth.actions';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  // user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
   constructor(

@@ -22,11 +22,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   @ViewChild(PlaceholderDirective, { static: false })
   alertHost: PlaceholderDirective;
 
-  constructor(
-    // private componentFactoryResolver: ComponentFactoryResolver,
-    private store: Store<fromApp.AppState>,
-    private viewContainerRef: ViewContainerRef,
-  ) {}
+  constructor(private store: Store<fromApp.AppState>, private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit() {
     this.storeSub = this.store.select('auth').subscribe((authState) => {
@@ -50,7 +46,6 @@ export class AuthComponent implements OnInit, OnDestroy {
     const password = form.value.password;
 
     if (this.isLoginMode) {
-      // authObs = this.authService.login(email, password);
       this.store.dispatch(AuthActions.LOGIN_START({ email, password }));
     } else {
       this.store.dispatch(AuthActions.SIGNUP_START({ email, password }));

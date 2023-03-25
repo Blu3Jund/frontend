@@ -78,12 +78,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       }),
     );
     this.itemAdded[index] = true;
-    // alert('Item added to Shopping List');
   }
 
   onEditProduct() {
     this.router.navigate(['edit'], { relativeTo: this.route });
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route})
   }
 
   onDeleteProduct() {

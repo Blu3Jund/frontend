@@ -73,7 +73,6 @@ export class HomeDetailsComponent implements OnInit, OnDestroy {
     updatedItems[index] = itemToUpdate;
     updatedProduct.items = updatedItems;
     this.store.dispatch(ProductActions.UPDATE_PRODUCT({ index: null, product: updatedProduct }));
-    // alert('Item added to Shopping List');
   }
 
   ngOnDestroy() {

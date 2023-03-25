@@ -24,11 +24,6 @@ export class ProductService {
     return this.products[index];
   }
 
-  // addItemsToShoppingList(items: Item[]) {
-  //   // this.slService.addItems(items);
-  //   this.store.dispatch(ShoppingListActions.ADD_ITEMS({ items }));
-  // }
-
   addProduct(product: Product) {
     this.products.push(product);
     this.productsChanged.next(this.products.slice());

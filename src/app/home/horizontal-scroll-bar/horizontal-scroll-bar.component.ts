@@ -1,35 +1,3 @@
-// import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-// import { Product } from '../../shared/models/product.model';
-//
-// @Component({
-//   selector: 'app-horizontal-scroll-bar',
-//   templateUrl: './horizontal-scroll-bar.component.html',
-//   styleUrls: ['./horizontal-scroll-bar.component.css'],
-// })
-// export class HorizontalScrollBarComponent {
-//   @Input() products: Product[];
-//
-//   private container: HTMLElement;
-//
-//   ngOnInit() {
-//     this.container = document.querySelector('.container');
-//   }
-//
-//   scrollLeft() {
-//     this.container.scrollTo({
-//       left: this.container.scrollLeft - this.container.offsetWidth,
-//       behavior: 'smooth',
-//     });
-//   }
-//
-//   scrollRight() {
-//     this.container.scrollTo({
-//       left: this.container.scrollLeft + this.container.offsetWidth,
-//       behavior: 'smooth',
-//     });
-//   }
-// }
-
 import { Component, Input } from '@angular/core';
 import { Product } from '../../shared/models/product.model';
 
