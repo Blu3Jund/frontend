@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { User } from "../user.model";
-import * as AuthActions from "./auth.actions";
+import { Action, createReducer, on } from '@ngrx/store';
+import { User } from '../user.model';
+import * as AuthActions from './auth.actions';
 
 export interface State {
   user: User;
@@ -27,12 +27,7 @@ const _authReducer = createReducer(
     ...state,
     authError: null,
     loading: false,
-    user: new User(
-      action.email,
-      action.userId,
-      action.token,
-      action.expirationDate
-    ),
+    user: new User(action.email, action.userId, action.admin, action.token, action.expirationDate),
   })),
 
   on(AuthActions.AUTHENTICATE_FAIL, (state, action) => ({
@@ -50,7 +45,7 @@ const _authReducer = createReducer(
   on(AuthActions.CLEAR_ERROR, (state) => ({
     ...state,
     authError: null,
-  }))
+  })),
 );
 
 export function authReducer(state: State, action: Action) {

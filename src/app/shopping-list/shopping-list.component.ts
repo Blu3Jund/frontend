@@ -1,98 +1,66 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { Store } from "@ngrx/store";
-import * as ShoppingListActions from "./store/shopping-list.actions";
-import * as fromApp from "../store/app.reducer";
-import { Item } from "../shared/models/item.model";
-import { Product } from "../shared/models/product.model";
-import { NavigationEnd } from "@angular/router";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as ShoppingListActions from './store/shopping-list.actions';
+import * as fromApp from '../store/app.reducer';
+import { Item } from '../shared/models/item.model';
+import { Product } from '../shared/models/product.model';
+import formatMoney from '../../lib/formatMoney';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: "app-shopping-list",
-  templateUrl: "./shopping-list.component.html",
-  styleUrls: ["./shopping-list.component.css"],
+  selector: 'app-shopping-list',
+  templateUrl: './shopping-list.component.html',
+  styleUrls: ['./shopping-list.component.css'],
 })
-export class ShoppingListComponent implements OnInit {
-  items: Observable<{ items: Item[] }>;
-  product: Observable<{ product: Product }>;
+export class ShoppingListComponent implements OnInit, OnDestroy {
+  items: Item[];
 
-  prod;
-  ite;
-
-  itemImages = new Map();
-  productImage;
+  productSub: Subscription;
+  product: Product;
+  email: string;
+  itemSub: Subscription;
+  private userSub: Subscription;
 
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.product = this.store.select("shoppingList");
-    this.items = this.store.select("shoppingList");
+    this.userSub = this.store
+      .select('auth')
+      .pipe(map((authState) => authState.user))
+      .subscribe((user) => {
+        this.email = user.email;
+      });
 
-    this.product.subscribe((product) => (this.prod = product.product));
-    this.items.subscribe((items) => (this.ite = items.items));
+    this.itemSub = this.store
+      .select('shoppingList')
+      .pipe(map((productsState) => productsState.items))
+      .subscribe((items: Item[]) => {
+        this.items = items;
+      });
+  }
 
-    this.onImageLoad();
+  onFormatMoney(value: number): string {
+    return formatMoney(value);
   }
 
   onDeleteItem(index: number, { item }) {
-    // this.store.dispatch(ShoppingListActions.START_EDIT({ index }));
-    let tempMap = new Map();
-    this.itemImages.forEach((value, key) => {
-      if (key > index) {
-        tempMap.set(key - 1, value);
-      } else {
-        tempMap.set(key, value);
-      }
-    });
-    this.itemImages = tempMap;
     this.store.dispatch(ShoppingListActions.DELETE_ITEM({ item }));
-    // this.store.dispatch(ShoppingListActions.STOP_EDIT());
   }
 
-  onImageLoad(): void {
-    // Product Upload
-    if (this.prod.upload) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.productImage = e.target.result;
-      };
-      reader.readAsDataURL(this.prod.upload.file.slice());
-    }
-
-    // // Product item uploads
-    // this.itemImages = [];
-    // for (const item of this.ite) {
-    //   if (item.upload) {
-    //     const reader = new FileReader();
-    //     reader.onload = (e) => {
-    //       this.itemImages.push(e.target.result);
-    //     };
-    //     reader.readAsDataURL(item.upload.file.slice());
-    //   }
-    // }
-
-    // Product item uploads
-    this.itemImages = new Map();
-    let imageIndexes = [];
-    let imageArray = [];
-    let i = 0;
-    for (const item of this.ite) {
-      if (item.upload) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          imageArray.push(e.target.result);
-          for (let k = 0; k < imageArray.length; k++) {
-            this.itemImages.set(imageIndexes[k], imageArray[k]);
-          }
-        };
-        imageIndexes.push(i);
-        reader.readAsDataURL(item.upload.file.slice());
-      }
-      i++;
-    }
+  onOrderItems(items: Item[], email: string) {
+    this.store.dispatch(ShoppingListActions.ADD_ORDER({ items, email }));
   }
-
   onEditItem(index: number) {
     this.store.dispatch(ShoppingListActions.START_EDIT({ index }));
+  }
+  ngOnDestroy() {
+    this.productSub?.unsubscribe();
+    this.itemSub?.unsubscribe();
+    this.userSub?.unsubscribe();
+  }
+
+  onSumOrder(items: Item[]) {
+    return items.reduce((acc, item) => acc + item.price, 0);
   }
 }

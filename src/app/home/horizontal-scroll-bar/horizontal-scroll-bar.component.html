@@ -1,0 +1,13 @@
+<div class="product-grid">
+  <div class="product-cell" *ngFor="let product of products.slice(startIndex, endIndex); let i = index">
+    <div class="product-row">
+      <app-product-card [product]="product" [index]="i + ((currentPage - 1)* 10)"></app-product-card>
+    </div>
+  </div>
+</div>
+
+<div class="pagination-controls">
+  <button class="prev-button" [disabled]="currentPage === 1" (click)="prevPage()">Prev</button>
+  <span class="page-number">{{ currentPage }} / {{ totalPages }}</span>
+  <button class="next-button" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+</div>

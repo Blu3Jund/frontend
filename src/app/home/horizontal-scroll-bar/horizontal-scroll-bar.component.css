@@ -1,0 +1,40 @@
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-row {
+  display: flex;
+  width: 100%;
+}
+
+.product-cell {
+  width: 19.8%;
+  margin-bottom: 20px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.prev-button,
+.next-button {
+  background: #fff;
+  border: 1px solid #555;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.prev-button[disabled],
+.next-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-number {
+  margin: 0 20px;
+  font-weight: bold;
+}

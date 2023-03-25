@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      [src]="product.image"
+      [alt]="product.name"
+      class="img-responsive"
+      style="max-height: 200px"
+    />
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ product.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group" appDropdown>
+          <button class="btn btn-info" (click)="onAddToShoppingList()" style="cursor: pointer">Add all items to the Shopping List</button>
+    </div>
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-xs-12">
+    {{ product.description }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <div class="pull-left">
+        <li class="list-group-item clearfix" *ngFor="let item of product.items; let i = index">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading pull-left">
+              Price: {{ onFormatMoney(item.price) }} | Stock: {{ item.quantity_in_stock }}
+            </h4>
+            <p class="list-group-item-text">
+              SKU: {{ item.sku }} | Variations: {{ item.variations }}
+            </p>
+          </div>
+
+          <span class="pull-right imaag">
+            <img
+              [src]="item.image"
+              [alt]="item.sku"
+              class="right"
+              style="max-height: 100px"
+            />
+            <label *ngIf="!itemAdded[i]"
+                   class="btn btn-info"
+                   (click)="onAddSingleToShoppingList(i)"
+                   style="max-height: 50px; margin: 10px;"
+            >Add to Cart</label>
+            <label *ngIf="itemAdded[i]"
+                   class="btn btn-success"
+                   (click)="onAddSingleToShoppingList(i)"
+                   style="max-height: 50px; margin: 10px;"
+            >Added to Cart</label>
+          </span>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
