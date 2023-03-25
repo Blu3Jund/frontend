@@ -1,27 +1,26 @@
 <div class="row">
-  <div class="col-xs-10">
-    <hr />
-    <ul class="list-group">
+  <div class="col-xs-10 mx-auto">
+    <table class="table table-striped">
       <div *ngFor="let order of orders let o = index">
-        <div *ngFor="let item of order.items let i = index">
-          <a class="list-group-item clearfix" style="cursor: pointer">
-
-              <span class="imaag">
-                <img
-                  [src]="item.image"
-                  [alt]="item.sku"
-                  class="right"
-                  style="max-height: 100px"
-                />
-              </span>
-            <div class="pull-left">
-              <p class="list-group-item-text">
-                {{ item.sku }} ({{ item.quantity_in_stock }}) {{ onFormatMoney(item.price) }} {{ item.variations }}
-              </p>
-            </div>
-          </a>
+        <div *ngIf="isMyOrder(order)">
+          <hr/>
+          <tr>
+          <th>Sum: {{onFormatMoney(onSumOrder(order))}}</th>
+          <th *ngFor="let item of order.items let i = index">
+            <span class="imaag">
+                  <img
+                    [src]="item.image"
+                    [alt]="item.sku"
+                    style="max-height: 100px"
+                  />
+                </span>
+            <p>
+              {{ item.sku }} - {{ onFormatMoney(item.price) }} {{ item.variations }}
+            </p>
+          </th>
+          </tr>
         </div>
       </div>
-    </ul>
+    </table>
   </div>
 </div>

@@ -12,7 +12,6 @@
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
           <a routerLink="/auth">Sign in/up</a>
         </li>
-        <li routerLinkActive="active"><a routerLink="/products">Products</a></li>
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
         <li routerLinkActive="active"><a routerLink="/orders">Orders</a></li>
       </ul>
@@ -20,16 +19,19 @@
         <li *ngIf="isAuthenticated">
           <a class="logout" style="cursor: pointer" (click)="onLogout()">Logout</a>
         </li>
-        <li class="dropdown dropdown-menu-dark" appDropdown *ngIf="isAuthenticated">
-          <a style="cursor: pointer" class="dropdown-toggle" role="button"
-            >Manage</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
-            <li><a class="dropdown-item" style="cursor: pointer" (click)="onFetchData()">Fetch Data</a></li>
-            <li><a class="dropdown-item" style="cursor: pointer" (click)="onDeleteData()">Delete Data</a></li>
-            <li><a class="dropdown-item" style="cursor: pointer" (click)="onMockData()">Create Mock Data</a></li>
-          </ul>
-        </li>
+        <div *ngIf="isAuthenticated && userAdmin">
+          <li routerLinkActive="active"><a routerLink="/products">Products</a></li>
+          <li class="dropdown dropdown-menu-dark" appDropdown>
+            <a style="cursor: pointer" class="dropdown-toggle" role="button"
+              >Manage</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer" (click)="onFetchData()">Fetch Data</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer" (click)="onDeleteData()">Delete Data</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer" (click)="onMockData()">Create Mock Data</a></li>
+            </ul>
+          </li>
+        </div>
       </ul>
     </div>
   </div>

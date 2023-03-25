@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from '../auth/store/auth.actions';
 import * as ProductActions from '../products/store/product.actions';
+import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +17,10 @@ import * as ProductActions from '../products/store/product.actions';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+
   private userSub: Subscription;
 
+  userAdmin: boolean;
   constructor(
     private dataStorageService: DataStorageService,
     private authService: AuthService,
@@ -29,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .select('auth')
       .pipe(map((authState) => authState.user))
       .subscribe((user) => {
+        this.userAdmin = user.email === 'benjaminshawki@gmail.com';
         this.isAuthenticated = !!user;
       });
   }

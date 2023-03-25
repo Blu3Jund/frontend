@@ -30,4 +30,6 @@
     </ul>
   </div>
 </div>
+
 <button class="btn btn-primary" type="button" (click)="onOrderItems(items, email)">Order items</button>
+<p>Sum: {{onFormatMoney(onSumOrder(items))}}</p>

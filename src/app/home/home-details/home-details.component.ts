@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import { map, switchMap } from 'rxjs/operators';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
-import * as ProductsActions from '../../products/store/product.actions';
+import * as ProductActions from '../../products/store/product.actions';
 import formatMoney from '../../../lib/formatMoney';
 
 @Component({
@@ -65,6 +65,14 @@ export class HomeDetailsComponent implements OnInit, OnDestroy {
       }),
     );
     this.itemAdded[index] = true;
+
+    const updatedProduct = { ...this.product };
+    const itemToUpdate = { ...updatedProduct.items[index] };
+    itemToUpdate.quantity_in_stock = itemToUpdate.quantity_in_stock - 1;
+    const updatedItems = [...updatedProduct.items];
+    updatedItems[index] = itemToUpdate;
+    updatedProduct.items = updatedItems;
+    this.store.dispatch(ProductActions.UPDATE_PRODUCT({ index: null, product: updatedProduct }));
     // alert('Item added to Shopping List');
   }
 

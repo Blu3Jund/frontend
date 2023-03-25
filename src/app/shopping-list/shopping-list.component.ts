@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from './store/shopping-list.actions';
+import * as ProductActions from '../products/store/product.actions';
 import * as fromApp from '../store/app.reducer';
 import { Item } from '../shared/models/item.model';
 import { Product } from '../shared/models/product.model';
@@ -32,18 +33,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       .subscribe((user) => {
         this.email = user.email;
       });
-    // this.subscription = this.store
-    // .select('shoppingList')
-    // .pipe(map((productsState) => productsState.products))
-    // .subscribe((products: Product[]) => {
-    //   this.products = products;
-    // });
-    // this.productSub = this.store
-    //   .select('shoppingList')
-    //   .pipe(map((productsState) => productsState.product))
-    //   .subscribe((product: Product) => {
-    //     this.product = product;
-    //   });
+
     console.log(this.product);
     this.itemSub = this.store
       .select('shoppingList')
@@ -64,7 +54,17 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   onDeleteItem(index: number, { item }) {
     // this.store.dispatch(ShoppingListActions.START_EDIT({ index }));
+
     this.store.dispatch(ShoppingListActions.DELETE_ITEM({ item }));
+
+    // const updatedProduct = { ...this.product };
+    // const itemToUpdate = { ...updatedProduct.items[index] };
+    // itemToUpdate.quantity_in_stock = itemToUpdate.quantity_in_stock + 1;
+    // const updatedItems = [...updatedProduct.items];
+    // updatedItems[index] = itemToUpdate;
+    // updatedProduct.items = updatedItems;
+    //
+    // this.store.dispatch(ProductActions.UPDATE_PRODUCT({ index: null, product: updatedProduct }));
     // this.store.dispatch(ShoppingListActions.STOP_EDIT());
   }
 
@@ -78,5 +78,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.productSub?.unsubscribe();
     this.itemSub?.unsubscribe();
     this.userSub?.unsubscribe();
+  }
+
+  onSumOrder(items: Item[]) {
+    return items.reduce((acc, item) => acc + item.price, 0);
   }
 }

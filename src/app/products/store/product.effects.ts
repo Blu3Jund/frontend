@@ -85,6 +85,25 @@ export class ProductEffects {
     { dispatch: false },
   );
 
+  updateProduct$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ProductsActions.UPDATE_PRODUCT),
+        switchMap((action) => {
+          return this.http.put(
+            `${environment.HOST_ADDRESS}/api/products/${action.product.id}`,
+            action.product,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            },
+          );
+        }),
+      ),
+    { dispatch: false },
+  );
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,
