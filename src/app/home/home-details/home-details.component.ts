@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../shared/models/product.model';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import * as ProductActions from '../../products/store/product.actions';
 import formatMoney from '../../../lib/formatMoney';
@@ -19,8 +19,6 @@ export class HomeDetailsComponent implements OnInit, OnDestroy {
   id: string;
   productSub: Subscription;
   routerSub: Subscription;
-  private userSub: Subscription;
-  isAuthenticated = false;
   itemAdded = [];
 
   constructor(
