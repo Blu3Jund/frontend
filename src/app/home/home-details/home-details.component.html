@@ -34,11 +34,13 @@
         <li class="list-group-item clearfix" *ngFor="let item of product.items; let i = index">
           <div class="pull-left">
             <h4 class="list-group-item-heading pull-left">
-              Price: {{ onFormatMoney(item.price) }} | Stock: {{ item.quantity_in_stock }}
+              {{ onFormatMoney(item.price) }}
             </h4>
-            <p class="list-group-item-text">
-              SKU: {{ item.sku }} | Variations: {{ item.variations }}
-            </p>
+            <br/>
+            <p class="pull-left">We have {{ item.quantity_in_stock >= 0 ? item.quantity_in_stock : 0 }} units!</p>
+            <br/>
+            <br/>
+            <p class=" pull-left">{{ item.sku }}</p>
           </div>
 
           <span class="pull-right imaag">

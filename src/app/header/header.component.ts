@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from '../auth/store/auth.actions';
 import * as ProductActions from '../products/store/product.actions';
-import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-header',

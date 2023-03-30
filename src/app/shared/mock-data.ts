@@ -1,5 +1,71 @@
 export const mockData = [
   {
+    id: '63c48fec6a13575420870944',
+    name: 'Maculata',
+    description:
+      'The Begonia Maculata is also known as the ‘Polka dot’ Begonia or ‘Forel’ Begonia. Its leaves are olive green and freckled with silvery-white spots on its upper surface. The reverse side is known for its eye-catching red-Bordeaux color. We advise you to place the Begonia Maculata in a spot with plenty of light and warmth.',
+    image:
+      'https://plnts.com/_next/image?url=https%3A%2F%2Fwebshop.plnts.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Faa5d334f459227518b6c3cf7ea9d29ed%2Fp%2Fl%2Fpl_m_016-thumbnail_5.jpg&w=640&q=80',
+    items: [
+      {
+        id: null,
+        sku: 'Maculata Begonia',
+        quantity_in_stock: 8,
+        price: 1395,
+        image:
+          'https://plnts.com/_next/image?url=https%3A%2F%2Fwebshop.plnts.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Faa5d334f459227518b6c3cf7ea9d29ed%2Fp%2Fl%2Fpl_m_016-2.jpg&w=640&q=80',
+        variations: null,
+      },
+    ],
+    categories: [],
+  },
+  {
+    id: '63c48fec6a13575420870944',
+    name: 'GameCube Controller',
+    description: 'Originele Nintendo GameCube controller',
+    image:
+      'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSHUxMn7XdHjVYv5JNqsyMbIKr9NwYHWasS0StnBcff7Oj4D4lUe_WXlO442fYEN_64xT8yMW1uY9GOOUxGzPQ0n3gXxHTj&usqp=CAE',
+    items: [
+      {
+        id: null,
+        sku: 'Zwart',
+        quantity_in_stock: 2,
+        price: 2400,
+        image:
+          'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSHUxMn7XdHjVYv5JNqsyMbIKr9NwYHWasS0StnBcff7Oj4D4lUe_WXlO442fYEN_64xT8yMW1uY9GOOUxGzPQ0n3gXxHTj&usqp=CAE',
+        variations: null,
+      },
+      {
+        id: null,
+        sku: 'Paars',
+        quantity_in_stock: 2,
+        price: 2400,
+        image: 'https://www.gamecubegames.nl/images/thumbnails/460/460/detailed/16/147288735.jpg',
+        variations: null,
+      },
+    ],
+    categories: [],
+  },
+  {
+    id: '63c48fec6a13575420870945',
+    name: 'Antique chess set',
+    description: '45x45x2 cm',
+    image:
+      'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81WgvPyYMmL._AC_SL1500_.jpg',
+    items: [
+      {
+        id: null,
+        sku: 'chess1',
+        quantity_in_stock: 2,
+        price: 24000,
+        image:
+          'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81NzqCChjkL._AC_SL1500_.jpg',
+        variations: null,
+      },
+    ],
+    categories: [],
+  },
+  {
     id: '63c48fec6a13575420870946',
     name: 'Algorithms 4th Edition',
     description: 'By Robert Sedgewick and Kevin Wayne',
@@ -9,7 +75,7 @@ export const mockData = [
         id: null,
         sku: 'algo-123',
         quantity_in_stock: 21,
-        price: 84,
+        price: 4000,
         image: 'https://algs4.cs.princeton.edu/cover.png',
         variations: null,
       },
@@ -26,8 +92,8 @@ export const mockData = [
       {
         id: null,
         sku: 'hover/1',
-        quantity_in_stock: 19,
-        price: 99,
+        quantity_in_stock: 10,
+        price: 1985,
         image:
           'https://m.media-amazon.com/images/M/MV5BMjA4MzI0NzI3MF5BMl5BanBnXkFtZTcwOTc4Mzg0OQ@@._V1_.jpg',
         variations: null,
@@ -46,7 +112,7 @@ export const mockData = [
         id: null,
         sku: 'Dune',
         quantity_in_stock: 40,
-        price: 19,
+        price: 1999,
         image: 'https://m.media-amazon.com/images/I/91Ec6xr1W0L.jpg',
         variations: null,
       },
@@ -54,7 +120,7 @@ export const mockData = [
         id: null,
         sku: 'Dune Messiah',
         quantity_in_stock: 19,
-        price: 19,
+        price: 1999,
         image: 'https://m.media-amazon.com/images/I/91BGHMcT9FL.jpg',
         variations: null,
       },
@@ -62,7 +128,7 @@ export const mockData = [
         id: null,
         sku: 'Children of Dune',
         quantity_in_stock: 49,
-        price: 19,
+        price: 1999,
         image: 'https://m.media-amazon.com/images/I/41KkHcLJLyL.jpg',
         variations: null,
       },
@@ -70,7 +136,7 @@ export const mockData = [
         id: null,
         sku: 'God Emperor of Dune',
         quantity_in_stock: 18,
-        price: 19,
+        price: 1999,
         image: 'https://m.media-amazon.com/images/I/81BhvxPiePL.jpg',
         variations: null,
       },
@@ -78,7 +144,7 @@ export const mockData = [
         id: null,
         sku: 'Heretics of Dune',
         quantity_in_stock: 59,
-        price: 19,
+        price: 1999,
         image: 'https://m.media-amazon.com/images/I/81fhlTRkRRL.jpg',
         variations: null,
       },
@@ -86,7 +152,7 @@ export const mockData = [
         id: null,
         sku: 'Chapterhouse: Dune',
         quantity_in_stock: 29,
-        price: 19,
+        price: 1999,
         image: 'https://m.media-amazon.com/images/I/91VR0pMZ4cL.jpg',
         variations: null,
       },
@@ -103,7 +169,7 @@ export const mockData = [
     items: [
       {
         id: null,
-        sku: 'Spicy',
+        sku: 'Melange',
         quantity_in_stock: 1,
         price: 99999,
         image:
@@ -116,7 +182,7 @@ export const mockData = [
   {
     id: '63c48fec6a1357542087094a',
     name: 'Free V-Bucks',
-    description: 'thisisunsafe',
+    description: 'this is not a scam',
     image:
       'https://cdn.shopify.com/s/files/1/0858/8878/products/fortnite-1-000-v-bucks-us-store-ps4-577_600x.jpg?v=1665074828',
     items: [
@@ -141,9 +207,9 @@ export const mockData = [
     items: [
       {
         id: null,
-        sku: 'alderlake/i9',
+        sku: 'alder lake',
         quantity_in_stock: 20,
-        price: 499,
+        price: 49900,
         image:
           'https://www.pcworld.com/wp-content/uploads/2021/11/12th_Gen_Core_i9_12900K_Hero_Close_Up-4.jpg?quality=50&strip=all&w=1024',
         variations: null,
@@ -163,7 +229,7 @@ export const mockData = [
         id: null,
         sku: 'VB-123',
         quantity_in_stock: 1991,
-        price: 0,
+        price: 4500,
         image: 'https://cdn-images-1.medium.com/fit/t/1600/480/0*uGFmBnZkFefXsb0z.gif',
         variations: null,
       },
@@ -178,7 +244,7 @@ export const mockData = [
     items: [
       {
         id: null,
-        sku: 'FunSingDancePretendAndKazoo',
+        sku: 'Buy a Smile',
         quantity_in_stock: 9,
         price: 19,
         image: 'https://i.kym-cdn.com/entries/icons/original/000/019/619/hqdefault.jpg',
